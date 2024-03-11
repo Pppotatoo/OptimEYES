@@ -1,0 +1,40 @@
+# Project: twonorm_C_devcpp
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = src/rfutils.o src/classRF.o src/classTree.o src/cokus.o src/twonorm_C_wrapper.o
+LINKOBJ  = src/rfutils.o src/classRF.o src/classTree.o src/cokus.o src/twonorm_C_wrapper.o
+LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc rfsub.o
+INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = twonorm_C_devcpp.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+src/rfutils.o: src/rfutils.cpp
+	$(CPP) -c src/rfutils.cpp -o src/rfutils.o $(CXXFLAGS)
+
+src/classRF.o: src/classRF.cpp
+	$(CPP) -c src/classRF.cpp -o src/classRF.o $(CXXFLAGS)
+
+src/classTree.o: src/classTree.cpp
+	$(CPP) -c src/classTree.cpp -o src/classTree.o $(CXXFLAGS)
+
+src/cokus.o: src/cokus.cpp
+	$(CPP) -c src/cokus.cpp -o src/cokus.o $(CXXFLAGS)
+
+src/twonorm_C_wrapper.o: src/twonorm_C_wrapper.cpp
+	$(CPP) -c src/twonorm_C_wrapper.cpp -o src/twonorm_C_wrapper.o $(CXXFLAGS)
